@@ -1,9 +1,12 @@
 import math
+path=[]
 def minimax (curDepth,maxTurn, scores,targetDepth):
   if (curDepth == targetDepth):
     if(maxTurn):
+      path.append(scores)
       return max(scores)
     else:
+      path.append(scores)
       return min(scores)
   if (maxTurn):
     maxnow=float('-inf')
