@@ -29,7 +29,7 @@ def dfs(open_list,closed_list,goal,i,j):
         dfs(open_list,closed_list,goal,i,j)
     if now not in closed_list:
         new(now,open_list,i,j)
-        closed_list.insert(0,now)
+        closed_list.append(now)
         dfs(open_list,closed_list,goal,i,j)
 
 i=int(input("enter 1st jug amount"))
