@@ -1,15 +1,24 @@
-gr={'A':['B','C'],'B':['D','E'],'C':['F','G']}
-def DLS(src,target,maxDepth):
-        if src == target : return True
-        if maxDepth < 0 : return False
-        if src in gr.keys():
-          for i in gr[src]:
-                  if(DLS(i,target,maxDepth-1)):
-                      return True
-        return False
-def iterative(src, target, maxDepth):
-    for i in range(maxDepth):
-        if (DLS(src, target, i)):
-            return True
-    return False
-iterative('A','G',2)
+graph={1:[2,3],2:[4,5],3:[6,7],4:[8,9],5:[10,11]}
+n=int(input("enter number of nodes"))
+goal=11
+def dfid(graph,goal,n):
+    depth=1
+    l=[1]
+    while(depth<=n):
+        p=[]
+        for j in l:
+            if j in graph.keys():
+                for i in graph[j]:
+                    if i not in l:
+                        p.append(i)
+                        if i==goal:
+                          return depth
+            l=l+p
+            print(l)
+        depth=depth+1
+    return -1;
+ans=dfid(graph,goal,n)
+if(ans==-1):
+    print("not found")
+else:
+    print("found at depth",ans)
